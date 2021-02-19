@@ -24,6 +24,10 @@ faker
 shoulda-matchers
 
 # Getting Started
+Live:
+1. Navigate to https://guilded-messenger.herokuapp.com/.
+2. Follow the API usage listed below for specific endpoints.
+
 Locally:
 1. Clone this repo locally.
 2. Run 'bundle' from the CLI.
@@ -32,11 +36,11 @@ Locally:
 5. Choose any endpoint to view retrieved data (see API usage section for more).
 
 # API usage
-The API can be leveraged to send and retrieve data - after building the project with the initial instructions in the "Getting Started" section, an exhaustive list can be found by running `rails routes` in the CLI. The following api endpoints and URIs can be used on top of the root path (localhost:3000 generally if building locally) and are documented here as well as in the testing (see the testing section):
+The API can be leveraged to send and retrieve data - after building the project with the initial instructions in the "Getting Started" section, an exhaustive list can be found by running `rails routes` in the CLI. The following api endpoints and URIs can be used on top of the root path (localhost:3000 generally if building locally or https://guilded-messenger.herokuapp.com/ if using the live version) and are documented here as well as in the testing (see the testing section).
 
 - GET '/'
 produces the homepage of the app.
-The README is available on this page.
+The live version can be accessed here: https://guilded-messenger.herokuapp.com/. Simply add the following endpoints to the root url.
 
 API endpoints based on the spec:
 (see additional endpoints section to view/retrieve user ids).
@@ -82,4 +86,4 @@ Given additional time, additional testing, refactoring of code, and building out
 
 # Assumptions
 The API endpoints as designed are limited both by number of entries and by date (last 30 days).
-The API could be parameterized to retrieve the data based on one condition or the other. I prioritized functionality and documentation in this release.
+The API could be parameterized to retrieve the data based on one condition or the other. I prioritized functionality, including a live version, and documentation in this release.

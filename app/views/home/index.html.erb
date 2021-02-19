@@ -19,6 +19,10 @@
 <p>faker</p>
 <p>shoulda-matchers</p>
 <h1 id="getting-started">Getting Started</h1>
+<p>Live:</p>
+<p>1. Navigate to https://guilded-messenger.herokuapp.com/.</p>
+<p>2. Follow the API usage listed below for specific endpoints.</p>
+
 <p>Locally:</p>
 
 <p>1. Clone this repo locally.</p>
@@ -27,9 +31,14 @@
 <p>4. To launch the project locally run 'rails s' from the command line. Choose your favorite browser and navigate to the URL listed in the output on the command line (typically localhost:3000). 5. Choose any endpoint to view retrieved data (see API usage section for more).</p>
 
 <h1 id="api-usage">API usage</h1>
-<p>The API can be leveraged to send and retrieve data - after building the project with the initial instructions in the &quot;Getting Started&quot; section, an exhaustive list can be found by running 'rails routes' in the CLI. The following api endpoints and URIs can be used on top of the root path (localhost:3000 generally if building locally) and are documented here as well as in the testing (see the testing section):</p>
+<p>The API can be leveraged to send and retrieve data - after building the project with the initial instructions in the &quot;Getting Started&quot; section, an exhaustive list can be found by running 'rails routes' in the CLI.
+  The following api endpoints and URIs can be used on top of the root path (localhost:3000 generally if building locally or https://guilded-messenger.herokuapp.com/ if using the live version) and are documented here as well as in the testing (see the testing section):</p>
 <ul>
-<li><p>GET '/' produces the homepage of the app. The README is available on this page.API endpoints based on the spec: (see additional endpoints section to view/retrieve user ids).</p></li>
+<li><p>GET '/' produces the homepage of the app. The live version can be accessed here: https://guilded-messenger.herokuapp.com/. Simply add the following endpoints to the root url.</p></li>
+</ul>
+
+<p>API endpoints based on the spec: (see additional endpoints section to view/retrieve user ids).</p>
+<ul>
 <li><p>GET '/api/user/:id_1/messages-from-sender/:id_2' This endpoint is used to get messages sent to a specific recipient from a specific sender, where :id_1 represents the id of the recipient and :id_2 represents the sender. Results are limited to the last 30 days and first 100 results.</p></li>
 <li><p>GET '/api/user/:id/messages-to-user' This endpoint retrieves any messages sent by any user to a particular user whose id is :id. Example usage: localhost:3000/api/user/1/messages-to-user yields any messages to the user whose id is 1. This api endpoint is also limited to the last 30 days and up to 100 results.</p></li>
 <li><p>GET '/api/recent-messages' This endpoint retrieves any and all messages sent by any user to any user, limited to the last 30 days and up to 100 results.</p></li>
