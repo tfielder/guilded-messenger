@@ -1,0 +1,53 @@
+<h1>
+  Example Guild Messaging API:
+</h1>
+
+
+<h1 id="readme">README</h1>
+<h1 id="summary">Summary</h1>
+<p>Author: Tim Fielder Date: 02/18/2021 Version: 1.0</p>
+<p>This is a simple prototype of a back-end API for the purpose of enabling a small web application to send and receive short text messages. This project creates two simple models: a User model and a Message model utilizing an API that leverages some basic CRUD functionality. In addition to the basic operations provided by the API, this project additionally yields requests for:</p>
+<ul>
+<li><p>1 - recent messages to a recipient by a specific sender.</p></li>
+<li><p>2 - recent messages to a recipient by all senders.</p></li>
+<li><p>3 - recent messages from all/any senders.</p></li>
+</ul>
+<h1 id="tech-used">Tech Used</h1>
+<p>Rails Version: 6.1.0 Ruby Version: 3.0.0 postgresql Version: 13.2</p>
+<p>Gems:</p>
+<p>rspec-rails</p>
+<p>faker</p>
+<p>shoulda-matchers</p>
+<h1 id="getting-started">Getting Started</h1>
+<p>Locally:</p>
+
+<p>1. Clone this repo locally.</p>
+<p>2. Run 'bundle' from the CLI.</p>
+<p>3. To initialize the database run 'rails db:create' then 'rails db:migrate' from the CLI. Note the database is populated with seed data for initialization purposes.</p>
+<p>4. To launch the project locally run 'rails s' from the command line. Choose your favorite browser and navigate to the URL listed in the output on the command line (typically localhost:3000). 5. Choose any endpoint to view retrieved data (see API usage section for more).</p>
+
+<h1 id="api-usage">API usage</h1>
+<p>The API can be leveraged to send and retrieve data - after building the project with the initial instructions in the &quot;Getting Started&quot; section, an exhaustive list can be found by running 'rails routes' in the CLI. The following api endpoints and URIs can be used on top of the root path (localhost:3000 generally if building locally) and are documented here as well as in the testing (see the testing section):</p>
+<ul>
+<li><p>GET '/' produces the homepage of the app. The README is available on this page.API endpoints based on the spec: (see additional endpoints section to view/retrieve user ids).</p></li>
+<li><p>GET '/api/user/:id_1/messages-from-sender/:id_2' This endpoint is used to get messages sent to a specific recipient from a specific sender, where :id_1 represents the id of the recipient and :id_2 represents the sender. Results are limited to the last 30 days and first 100 results.</p></li>
+<li><p>GET '/api/user/:id/messages-to-user' This endpoint retrieves any messages sent by any user to a particular user whose id is :id. Example usage: localhost:3000/api/user/1/messages-to-user yields any messages to the user whose id is 1. This api endpoint is also limited to the last 30 days and up to 100 results.</p></li>
+<li><p>GET '/api/recent-messages' This endpoint retrieves any and all messages sent by any user to any user, limited to the last 30 days and up to 100 results.</p></li>
+</ul>
+<p>Additional endpoints:</p>
+<ul>
+<li><p>GET '/api/users' shows the list of all users. Note the ids for use in retrieving messages by and from particular users.</p></li>
+<li><p>GET '/api/users/:id' retrieves the data for a single user based on the user's id (:id). E.g. 'localhost:3000/api/users/5'</p></li>
+<li><p>POST '/api/users' allows you to create a new user record. When using a tool such as Postman - include the header with a key of Content-Type and value of application/json. The body of the post request should include a raw format such as { &quot;user&quot;: { &quot;first_name&quot;: &quot;x&quot;, &quot;last_name&quot;: &quot;y&quot; }} where x is the first name of the user and y is the last name of the user.</p></li>
+<li><p>DELETE '/api/users/:id' endpoint to delete a message using the user id of :id. E.g. 'localhost:3000/api/users/5'.</p></li>
+<li><p>GET '/api/messages' retrieves the data for all messages. Note this endpoint is not limited by date or number of returned objects.</p></li>
+<li><p>GET '/api/messages/:id' retrieves a specific message by the message id. This endpoint is used to retrieve a single message by id.</p></li>
+<li><p>POST '/api/messages' allows you to create a new message record. When using a tool such as Postman - include the header with a key of Content-Type and value of application/json. The body of the post request should include a raw format such as { &quot;message&quot;: { &quot;subject&quot;: &quot;x&quot;, &quot;body&quot;: &quot;y&quot;, &quot;sender_id&quot;: &quot;z&quot;, &quot;receiver_id&quot;: &quot;w&quot; }} where x is the subject of the message, y is the content of the message, z is the id of the sender (be sure one exists), and w is the id of the intended recipient (be sure one exists). Troubleshooting: Verify the recipient id exists via the 'api/users' endpoint.</p></li>
+<li><p>DELETE 'api/messages/:id' endpoint to delete a particular message where :id is the message id.</p></li>
+</ul>
+<h1 id="testing">Testing</h1>
+<p>Testing may be run from the CLI. After initializing the project through the instructions in the &quot;Getting Started&quot; section, run 'rspec' from the command line to run tests. Testing is located in the spec directory and contains testing for both models and api requests under their respective sub directories.</p>
+<h1 id="next-steps">Next Steps</h1>
+<p>Given additional time, additional testing, refactoring of code, and building out additional CRUD functionality (update function) would be included.</p>
+<h1 id="assumptions">Assumptions</h1>
+<p>The API endpoints as designed are limited both by number of entries and by date (last 30 days). The API could be parameterized to retrieve the data based on one condition or the other. I prioritized functionality and documentation in this release.</p>
