@@ -31,7 +31,7 @@ Live:
 Locally:
 1. Clone this repo locally.
 2. Run 'bundle' from the CLI.
-3. To initialize the database run 'rails db:create' then 'rails db:migrate' from the CLI. Note the database is populated with seed data for initialization purposes.
+3. To initialize the database run 'rails db:create' then 'rails db:migrate' from the CLI. Note the database is populated with seed data for initialization purposes. Note: run 'rails db:seed' if you wish the database to be seeded with data. 
 4. To launch the project locally run 'rails s' from the command line. Choose your favorite browser and navigate to the URL listed in the output on the command line (typically localhost:3000).
 5. Choose any endpoint to view retrieved data (see API usage section for more).
 
