@@ -174,4 +174,86 @@ describe 'users API requests' do
       expect(json_response.length).to eq(3)
     end
   end
+
+  describe 'GET /api/messages' do
+    it 'should return a list of messages' do
+      user_1 = User.create(first_name: "Hero", last_name: "Jacobs")
+      user_2 = User.create(first_name: "Lady", last_name: "Pearson")
+
+      sub1 = 'yo'
+      sub2 = 'something'
+      sub3 = 'else'
+
+      bod1 = 'me'
+      bod2 = 'you'
+      bod3 = 'I'
+
+      message_1 = Message.create(
+        subject: sub1,
+        body: bod1,
+        receiver_id: user_1.id,
+        sender_id: user_2.id
+      )
+
+      message_2 = Message.create(
+        subject: sub1,
+        body: bod1,
+        receiver_id: user_2.id,
+        sender_id: user_1.id
+      )
+
+      get "/api/messages", params: {}
+
+      expect(response.status).to eq(200)
+
+      json_response = JSON.parse(response.body)
+
+      expect(json_response.length).to eq(2)
+    end
+  end
+
+  describe 'DELETE /api/messages/:id' do
+    it 'should delete the message by id' do
+      user_1 = User.create(first_name: "Hero", last_name: "Jacobs")
+      user_2 = User.create(first_name: "Lady", last_name: "Pearson")
+
+      sub1 = 'yo'
+      sub2 = 'something'
+      sub3 = 'else'
+
+      bod1 = 'me'
+      bod2 = 'you'
+      bod3 = 'I'
+
+      message_1 = Message.create(
+        subject: sub1,
+        body: bod1,
+        receiver_id: user_1.id,
+        sender_id: user_2.id
+      )
+
+      message_2 = Message.create(
+        subject: sub1,
+        body: bod1,
+        receiver_id: user_2.id,
+        sender_id: user_1.id
+      )
+
+      get "/api/messages", params: {}
+
+      expect(response.status).to eq(200)
+
+      json_response = JSON.parse(response.body)
+
+      expect(json_response.length).to eq(2)
+
+      delete "/api/messages/#{message_1.id}", params: {}
+
+      get "/api/messages", params: {}
+
+      after_deleted_response = JSON.parse(response.body)
+
+      expect(after_deleted_response.length).to eq(1)
+    end
+  end
 end
